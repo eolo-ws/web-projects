@@ -1,0 +1,14 @@
+FROM python:latest
+
+EXPOSE 5000
+
+WORKDIR /app
+
+COPY requirements.txt /app
+COPY app.py /app
+COPY proc.py /app
+COPY header.py /app
+
+RUN pip install -r requirements.txt
+
+CMD python app.py
