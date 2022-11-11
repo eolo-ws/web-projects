@@ -1,16 +1,20 @@
 services:
   getapp:
     build: ./flask/get-app
+    image: get-app
     ports:
       - "5000:5000"
     network_mode: bridge
+    container_name: get-app
   postapp:
     build: ./flask/post-app
+    image: post-app
     links:
       - db
     ports:
       - "4000:4000"
     network_mode: bridge
+    container_name: post-app
   db:
     image: mysql:debian
     ports:
@@ -20,8 +24,11 @@ services:
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
     network_mode: bridge
+    container_name: mysql
   frontapp:
     build: ./angular/frontend-app
+    image: frontend-app
     ports:
       - "4200:4200"
     network_mode: bridge      
+    container_name: frontend-app

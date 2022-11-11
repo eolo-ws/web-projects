@@ -4,7 +4,7 @@ USE tasks;
 CREATE TABLE procs
 (
   id                    INT unsigned NOT NULL AUTO_INCREMENT,
-  proc                  VARCHAR(150) NOT NULL,                
+  process               VARCHAR(150) NOT NULL,                
   pid                   INT unsigned NOT NULL,                
   cpu                   FLOAT unsigned NOT NULL,                      
   mem                   FLOAT unsigned NOT NULL,                        
@@ -14,9 +14,9 @@ CREATE TABLE procs
 CREATE TABLE header
 (
   id                    INT unsigned NOT NULL AUTO_INCREMENT,
-  proc                  VARCHAR(150) NOT NULL,                               
+  process               INT unsigned NOT NULL,                               
   cpu                   FLOAT unsigned NOT NULL,                      
   mem                   FLOAT unsigned NOT NULL,      
-  ts                    TIMESTAMP,                   
+  ts                    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,                   
   PRIMARY KEY           (id)                                 
 );

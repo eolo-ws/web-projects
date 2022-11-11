@@ -23,7 +23,7 @@ def index():
         mem = x['MEM']
         connection = mysql.connector.connect(**config)
         cursor = connection.cursor()
-        cursor.execute(''' INSERT INTO procs(proc,pid,cpu,mem) VALUES(%s,%s,%s,%s)''',(proc,pid,cpu,mem))
+        cursor.execute(''' INSERT INTO procs(process,pid,cpu,mem) VALUES(%s,%s,%s,%s)''',(proc,pid,cpu,mem))
         connection.commit()
 
     cursor.close()
@@ -41,14 +41,14 @@ def postHeader():
     }
     data = request.get_json()
 
-    proc = data['PROC']
-    cpu = data['CPU']
-    mem = data['MEM']
+    proc = data[0]['PROC']
+    cpu = data[0]['CPU']
+    mem = data[0]['MEM']
+
     connection = mysql.connector.connect(**config)
     cursor = connection.cursor()
-    cursor.execute(''' INSERT INTO header(proc,cpu,mem) VALUES(%i,%f,%f)''',(proc,cpu,mem))
+    cursor.execute(''' INSERT INTO header(process,cpu,mem) VALUES(%s,%s,%s)''',(proc,cpu,mem))
     connection.commit()
-
     cursor.close()
     connection.close()
     return 'Posted to MySQL database succesfully!'
