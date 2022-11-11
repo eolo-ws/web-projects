@@ -1,0 +1,9 @@
+services:
+  db:
+    image: mysql:debian
+    ports:
+      - 32000:32000
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
