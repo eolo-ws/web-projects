@@ -1,0 +1,11 @@
+services:
+  python:
+    build: ./flask
+    ports:
+      - "5000:5000"
+    network_mode: bridge
+  angular:
+    build: ./angular/frontend
+    ports:
+      - "4200:4200"
+    network_mode: bridge

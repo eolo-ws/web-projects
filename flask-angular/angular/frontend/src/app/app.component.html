@@ -1,0 +1,25 @@
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" mode="side">
+    <mat-toolbar>
+      <button mat-icon-button (click)="opened = !opened">
+      <mat-icon>menu</mat-icon>
+      </button>
+      <span>Menu</span>
+    </mat-toolbar>
+    <a routerLink="/home"><mat-card>Home</mat-card></a>
+    <a routerLink="/table"><mat-card>Processes</mat-card></a>
+    <a routerLink="/about"><mat-card>About</mat-card></a>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button (click)="opened = !opened">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a routerLink="/"><span>Web Task Manager</span></a>
+      
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

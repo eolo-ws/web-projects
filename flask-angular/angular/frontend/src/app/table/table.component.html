@@ -1,0 +1,69 @@
+<div class="mat-elevation-z8">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      (matSortChange)="announceSortChange($event)"
+    >
+      <!-- PROC Column -->
+      <ng-container matColumnDef="PROC">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by name"
+        >
+          PROC
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.PROC }}</td>
+      </ng-container>
+  
+      <!-- PID Column -->
+      <ng-container matColumnDef="PID">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by number"
+        >
+          PID
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.PID }}</td>
+      </ng-container>
+  
+      <!-- CPU Column -->
+      <ng-container matColumnDef="CPU">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by number"
+        >
+          CPU
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.CPU }}</td>
+      </ng-container>
+  
+      <!-- MEM Column -->
+      <ng-container matColumnDef="MEM">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by number"
+        >
+          MEM
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.MEM }}</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  
+    <mat-paginator
+      [pageSizeOptions]="[10, 20]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+  
