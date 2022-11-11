@@ -1,0 +1,5 @@
+services:
+  src:
+    build: ./src
+    ports:
+      - "5000:5000"
