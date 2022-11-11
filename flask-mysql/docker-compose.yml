@@ -1,0 +1,15 @@
+services:
+  app:
+    build: ./src
+    links:
+      - db
+    ports:
+      - "5000:5000"
+  db:
+    image: mysql:debian
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro

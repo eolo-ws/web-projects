@@ -1,0 +1,12 @@
+FROM python:latest
+
+EXPOSE 5000
+
+WORKDIR /app
+
+COPY requirements.txt /app
+COPY app.py /app
+RUN pip install -r requirements.txt
+COPY templates /app/templates
+
+CMD python app.py
