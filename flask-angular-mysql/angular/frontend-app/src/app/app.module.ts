@@ -20,10 +20,11 @@ import { HomeComponent } from './home/home.component';
 import { TableComponent } from './table/table.component';
 
 import { MaterialExampleModule } from '../material.module';
+import { GraphsComponent } from './graphs/graphs.component';
 
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, HomeComponent, TableComponent],
+  declarations: [AppComponent, AboutComponent, HomeComponent, TableComponent, GraphsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
