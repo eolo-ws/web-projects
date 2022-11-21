@@ -1,14 +1,11 @@
-
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FlaskApiService } from '../flask-api.service';
-
-
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  selector: 'app-charts',
+  templateUrl: './charts.component.html',
+  styleUrls: ['./charts.component.css']
 })
-export class AboutComponent implements OnInit {
+export class ChartsComponent {
   cdat: any;
   tdat: any;
   chart = [];
