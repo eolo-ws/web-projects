@@ -1,5 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FlaskApiService } from '../flask-api.service';
+import Chart from 'chart.js/auto';
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
@@ -8,20 +9,128 @@ import { FlaskApiService } from '../flask-api.service';
 export class ChartsComponent {
   cdat: any;
   tdat: any;
-  chart = [];
+  mdat: any;
+
+  chart: any = [];
+  chart2: any = [];
+
   cpu_data: any[] = [];
   time_data: any[] = [];
+  mem_data: any[] = [];
+
+
+  dates: any[] = [];
+
+  cpu: any;
+  mem: any;
+  procs: any;
+  data: any;
   constructor(private flaskApi: FlaskApiService) { }
+
+
+  buttonPress(): void {  this.flaskApi.getHeader().subscribe((data) => {
+    this.cpu = data[0]['CPU'];
+    this.mem = data[0]['MEM'];
+    this.procs = data[0]['PROC'];
+    this.data = data;
+    this.flaskApi.sendDataHeader(this.data).subscribe(something => {
+      console.log(something);
+    });
+  });}
+
+
   ngOnInit(): void {
     this.flaskApi.getData().subscribe((data) => {
       for (let index = 0; index < data.length; index++) {
         this.cdat = data[index]['cpu'];
+        this.mdat = data[index]['mem'];
         this.tdat = data[index]['ts'];
         this.cpu_data.push(this.cdat);
+        this.mem_data.push(this.mdat);
         this.time_data.push(this.tdat);
       }
+
       console.log(this.time_data);
       console.log(this.cpu_data);
+      console.log(this.mem_data);
+
+      this.time_data.forEach(element => {
+        let jsdate = new Date(element);
+        this.dates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }))
+      });
+      // console.log(this.dates);
+
+
+      this.chart = new Chart('canvas', {
+        type: 'line',
+        data: {
+          labels: this.dates,
+          datasets: [
+            {
+              data: this.cpu_data,
+              borderColor: '#3cba9f',
+              fill: false,
+            }
+          ],
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          scales: {
+            x: {
+              ticks: {
+                display: true,
+                color: "white"
+              },
+            },
+            y: {
+              ticks: {
+                display: true,
+                color: "white"
+              },
+            },
+          },
+        },
+      });
+
+      this.chart2 = new Chart('canvas2', {
+        type: 'line',
+        data: {
+          labels: this.dates,
+          datasets: [
+            {
+              data: this.mem_data,
+              borderColor: '#3cba9f',
+              fill: false,
+            }
+          ],
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          scales: {
+            x: {
+              ticks: {
+                display: true,
+                color: "white"
+              },
+            },
+            y: {
+              ticks: {
+                display: true,
+                color: "white"
+              },
+            },
+          },
+        },
+      });
+
     });
   }
 }
