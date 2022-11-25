@@ -5,6 +5,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+
+# Saves the data into the table procs in the tasks databes in MySQL
 @app.route('/', methods=['POST'])
 def index():
     config = {
@@ -30,6 +32,7 @@ def index():
     connection.close()
     return 'Posted to MySQL database succesfully!'
 
+# Saves the header data into the header table in the tasks table in MySQL
 @app.route('/header', methods=['POST'])
 def postHeader():
     config = {
@@ -53,6 +56,8 @@ def postHeader():
     connection.close()
     return 'Posted to MySQL database succesfully!'
 
+
+# Fetches the data from the table header from the tasks database and sends it 
 @app.route('/cpu', methods=['GET'])
 def getCpuGraphData():
     config = {

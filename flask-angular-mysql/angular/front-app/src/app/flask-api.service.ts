@@ -17,6 +17,14 @@ export class FlaskApiService{
     }),
   };
 
+  //Fetch Processes
+
+  //Fetch Database
+
+  //Send to Databse
+
+
+
   public getHeader(): Observable<any> {
     return this.http.get<any>('http://127.0.0.1:5000/header');
   }

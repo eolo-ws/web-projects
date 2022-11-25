@@ -1,13 +1,14 @@
-<h1 class="center-h1">X:Time - Y:CPU%</h1>
 
 
 <div class="button-center"><button mat-raised-button color="accent" (click)="buttonPress()">Get Data</button></div>
 
+
+<h1 class="center-h1">X:Time - Y:CPU%</h1>
 <div *ngIf="chart">
   <canvas id="canvas">{{ chart }}</canvas>
 </div>
 
-<h1 class="center-h1" >X:Time - Y:MEM%</h1>
+<h1 class="center-h1">X:Time - Y:MEM%</h1>
 <div *ngIf="chart">
   <canvas id="canvas2">{{ chart }}</canvas>
 </div>
