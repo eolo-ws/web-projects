@@ -15,13 +15,13 @@ export class HomeComponent implements OnInit {
   constructor(private flaskApi: FlaskApiService) {}
 
   ngOnInit(): void {
-    this.flaskApi.getHeader().subscribe((data) => {
+    this.flaskApi.getHeaderData().subscribe((data) => {
       this.cpu = data[0]['CPU'];
       this.mem = data[0]['MEM'];
       this.procs = data[0]['PROC'];
       this.data = data;
-      this.flaskApi.sendDataHeader(this.data).subscribe(something => {
-        console.log(something);
+      this.flaskApi.postHeaderData(this.data).subscribe(something => {
+        console.log('something');
       });
     });
   }

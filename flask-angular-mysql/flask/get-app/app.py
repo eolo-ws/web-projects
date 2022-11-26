@@ -7,11 +7,11 @@ from proc import getProcs
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/header")
+@app.route("/getHeader")
 def getH():
     return getHeader()
 
-@app.route("/procs")
+@app.route("/getProcs")
 def getP():
     return getProcs()
 

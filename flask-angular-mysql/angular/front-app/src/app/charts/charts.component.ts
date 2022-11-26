@@ -28,20 +28,20 @@ export class ChartsComponent {
   constructor(private flaskApi: FlaskApiService) { }
 
 
-  buttonPress(): void {  this.flaskApi.getHeader().subscribe((data) => {
+  buttonPress(): void {  this.flaskApi.getHeaderData().subscribe((data) => {
     this.cpu = data[0]['CPU'];
     this.mem = data[0]['MEM'];
     this.procs = data[0]['PROC'];
     this.data = data;
-    this.flaskApi.sendDataHeader(this.data).subscribe(something => {
-      console.log(something);
+    this.flaskApi.postHeaderData(this.data).subscribe(something => {
+      console.log('something');
     });
   });}
 
 
 
   ngOnInit(): void {
-    this.flaskApi.getData().subscribe((data) => {
+    this.flaskApi.getChartData().subscribe((data) => {
       for (let index = 0; index < data.length; index++) {
         this.cdat = data[index]['cpu'];
         this.mdat = data[index]['mem'];
@@ -51,9 +51,9 @@ export class ChartsComponent {
         this.time_data.push(this.tdat);
       }
 
-      console.log(this.time_data);
-      console.log(this.cpu_data);
-      console.log(this.mem_data);
+      // console.log(this.time_data);
+      // console.log(this.cpu_data);
+      // console.log(this.mem_data);
 
       this.time_data.forEach(element => {
         let jsdate = new Date(element);

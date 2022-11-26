@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class FlaskApiService{
+export class FlaskApiService {
 
   constructor(private http: HttpClient) { }
 
@@ -17,30 +17,27 @@ export class FlaskApiService{
     }),
   };
 
-  //Fetch Processes
-
-  //Fetch Database
-
-  //Send to Databse
-
-
-
-  public getHeader(): Observable<any> {
-    return this.http.get<any>('http://127.0.0.1:5000/header');
+  //Fetch from Processes API
+  public getHeaderData(): Observable<any> {
+    return this.http.get<any>('http://127.0.0.1:5000/getHeader');
   }
-  public getProcs(): Observable<any> {
-    return this.http.get<any>('http://127.0.0.1:5000/procs');
+  public getProcsData(): Observable<any> {
+    return this.http.get<any>('http://127.0.0.1:5000/getProcs');
   }
 
-  public sendData(data:any): Observable<any>{
-    return this.http.post('http://127.0.0.1:4000',data, this.httpOptions);
-  }
-  public sendDataHeader(data:any): Observable<any>{
-    console.log(data);
-    return this.http.post('http://127.0.0.1:4000/header',data, this.httpOptions);
-  }
-  public getData(): Observable<any> {
+  //Fetch from Database API
+  public getChartData(): Observable<any> {
     return this.http.get<any>('http://127.0.0.1:4000/cpu');
   }
+
+  //Send to Database API
+  public postProcsData(data: any): Observable<any> {
+    return this.http.post('http://127.0.0.1:4000/postProcs', data, this.httpOptions);
+  }
+  public postHeaderData(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post('http://127.0.0.1:4000/postHeader', data, this.httpOptions);
+  }
+
 }
 
