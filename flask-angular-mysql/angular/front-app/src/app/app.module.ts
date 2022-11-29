@@ -21,10 +21,11 @@ import { TableComponent } from './table/table.component';
 
 import { MaterialExampleModule } from '../material.module';
 import { ChartsComponent } from './charts/charts.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, HomeComponent, TableComponent, ChartsComponent],
+  declarations: [AppComponent, AboutComponent, HomeComponent, TableComponent, ChartsComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
