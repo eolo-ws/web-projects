@@ -27,7 +27,7 @@ export class FlaskApiService {
 
   //Fetch from Database API
   public getChartData(): Observable<any> {
-    return this.http.get<any>('http://127.0.0.1:4000/cpu');
+    return this.http.get<any>('http://127.0.0.1:4000/getChartData');
   }
 
   //Send to Database API

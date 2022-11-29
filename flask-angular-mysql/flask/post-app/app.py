@@ -52,7 +52,7 @@ def postHeader():
 
 
 # Fetches the data from the table header from the tasks database and sends it 
-@app.route('/cpu', methods=['GET'])
+@app.route('/getChartData', methods=['GET'])
 def getCpuGraphData():
     global config
     connection = mysql.connector.connect(**config)
