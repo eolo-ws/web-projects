@@ -10,7 +10,6 @@ export class LoginComponent {
 
   onSubmit(data: any){
     console.log(data);
-    
   }
   hide = true;
 }
