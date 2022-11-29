@@ -32,9 +32,9 @@ export class TableComponent implements OnInit {
   @ViewChild(MatSort)sort!: MatSort;
 
   ngOnInit(): void {
-    this.flaskApi.getProcs().subscribe((data) => {
+    this.flaskApi.getProcsData().subscribe((data) => {
       this.data = data;
-      this.flaskApi.sendData(this.data).subscribe(something => {
+      this.flaskApi.postProcsData(this.data).subscribe((something) => {
         console.log('something');
       });
       this.dataSource = new MatTableDataSource(this.data);

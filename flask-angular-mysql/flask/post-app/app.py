@@ -5,17 +5,18 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-
-# Saves the data into the table procs in the tasks databes in MySQL
-@app.route('/', methods=['POST'])
-def index():
-    config = {
+config = {
         'user': 'root',
         'password': 'root',
         'host': 'db',
         'port': '3306',
         'database': 'tasks'
     }
+
+# Saves the data into the table procs in the tasks databes in MySQL
+@app.route('/postProcs', methods=['POST'])
+def index():
+    global config
     data = request.get_json()
 
     for x in data:
@@ -30,18 +31,11 @@ def index():
 
     cursor.close()
     connection.close()
-    return 'Posted to MySQL database succesfully!'
 
 # Saves the header data into the header table in the tasks table in MySQL
-@app.route('/header', methods=['POST'])
+@app.route('/postHeader', methods=['POST'])
 def postHeader():
-    config = {
-        'user': 'root',
-        'password': 'root',
-        'host': 'db',
-        'port': '3306',
-        'database': 'tasks'
-    }
+    global config
     data = request.get_json()
 
     proc = data[0]['PROC']
@@ -54,19 +48,13 @@ def postHeader():
     connection.commit()
     cursor.close()
     connection.close()
-    return 'Posted to MySQL database succesfully!'
+
 
 
 # Fetches the data from the table header from the tasks database and sends it 
 @app.route('/cpu', methods=['GET'])
 def getCpuGraphData():
-    config = {
-        'user': 'root',
-        'password': 'root',
-        'host': 'db',
-        'port': '3306',
-        'database': 'tasks'
-    }
+    global config
     connection = mysql.connector.connect(**config)
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM header')
