@@ -7,21 +7,20 @@
 
         <mat-card-content class="header-subtitle">Use your username and password</mat-card-content>
 
-        <form #loginForm=ngForm (ngSubmit)="onSubmit(loginForm.value)">
-
+        <form [formGroup]="form">
+            <fieldset>
             <mat-card-content class="form-field">
 
                 <mat-form-field class="form-box" appearance="fill">
                     <mat-label>Enter your username</mat-label>
-                    <input name="username" matInput placeholder="username" ngModel>
+                    <input name="username" matInput placeholder="username" formControlName="username">
                 </mat-form-field>
 
                 <mat-form-field class="form-box" appearance="fill">
 
                     <mat-label>Enter your password</mat-label>
 
-                    <input name="password" matInput [type]="hide ? 'password' : 'text'" ngModel>
-
+                    <input name="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
 
                     <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
@@ -32,13 +31,15 @@
                 </mat-form-field>
 
             </mat-card-content>
+        </fieldset>
+
 
             <mat-card-content class="pass-field">
                 <a routerLink="/home" class="pass-link">Forgot password?</a>
             </mat-card-content>
 
             <mat-card-content class="login-button">
-                <button mat-raised-button color="accent" type="submit">Login</button>
+                <button mat-raised-button color="accent"  (click)="login()">Login</button>
             </mat-card-content>
 
         </form>

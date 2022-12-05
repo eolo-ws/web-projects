@@ -15,6 +15,15 @@ services:
       - "4000:4000"
     network_mode: bridge
     container_name: post-app
+  userapp:
+    build: ./flask/user-app
+    image: user-app
+    links:
+      - db
+    ports:
+      - "3000:3000"
+    network_mode: bridge
+    container_name: user-app
   db:
     image: mysql:debian
     ports:

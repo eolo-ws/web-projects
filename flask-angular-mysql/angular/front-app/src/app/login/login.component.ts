@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { OnInit, Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,9 +11,29 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 })
 export class LoginComponent {
 
+  form!: FormGroup;
+  constructor(private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router) {
 
-  onSubmit(data: any){
-    console.log(data);
+    this.form = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
-  hide = true;
+  login() {
+    const val = this.form.value;
+    console.log(val.username);
+    console.log(val.password);
+    if (val.username && val.password) {
+      this.authService.loginAuth(val.username, val.password).subscribe(
+          () => {
+            console.log("User is logged in");
+            this.router.navigateByUrl('/');
+          }
+        );
+    }
+  }
+
+  hide = true
 }
