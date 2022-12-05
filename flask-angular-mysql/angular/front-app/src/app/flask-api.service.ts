@@ -35,7 +35,6 @@ export class FlaskApiService {
     return this.http.post('http://127.0.0.1:4000/postProcs', data, this.httpOptions);
   }
   public postHeaderData(data: any): Observable<any> {
-    console.log(data);
     return this.http.post('http://127.0.0.1:4000/postHeader', data, this.httpOptions);
   }
 

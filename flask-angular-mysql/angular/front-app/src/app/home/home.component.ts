@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
       this.procs = data[0]['PROC'];
       this.data = data;
       this.flaskApi.postHeaderData(this.data).subscribe(something => {
-        console.log('something');
+        console.log('Posted header data.');
       });
     });
   }

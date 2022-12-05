@@ -20,11 +20,3 @@ CREATE TABLE header
   ts                    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,                   
   PRIMARY KEY           (id)                                 
 );
-
-CREATE TABLE users
-(
-  id                    INT unsigned NOT NULL AUTO_INCREMENT,
-  username              VARCHAR(150) unsigned NOT NULL,                               
-  hashpw                FLOAT unsigned NOT NULL,                                         
-  PRIMARY KEY           (id)                                 
-);

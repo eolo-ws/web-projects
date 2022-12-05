@@ -31,6 +31,9 @@ def index():
 
     cursor.close()
     connection.close()
+    return jsonify({"status":"all-good"})
+
+
 
 # Saves the header data into the header table in the tasks table in MySQL
 @app.route('/postHeader', methods=['POST'])
@@ -48,6 +51,7 @@ def postHeader():
     connection.commit()
     cursor.close()
     connection.close()
+    return jsonify({"status":"all-good"})
 
 
 

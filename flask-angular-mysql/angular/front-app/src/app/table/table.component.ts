@@ -35,7 +35,7 @@ export class TableComponent implements OnInit {
     this.flaskApi.getProcsData().subscribe((data) => {
       this.data = data;
       this.flaskApi.postProcsData(this.data).subscribe((something) => {
-        console.log('something');
+        console.log('Posted procs data.');
       });
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;

@@ -34,7 +34,7 @@ export class ChartsComponent {
     this.procs = data[0]['PROC'];
     this.data = data;
     this.flaskApi.postHeaderData(this.data).subscribe(something => {
-      console.log('something');
+      console.log('Posted header data.');
     });
   });}
 
@@ -51,16 +51,10 @@ export class ChartsComponent {
         this.time_data.push(this.tdat);
       }
 
-      // console.log(this.time_data);
-      // console.log(this.cpu_data);
-      // console.log(this.mem_data);
-
       this.time_data.forEach(element => {
         let jsdate = new Date(element);
         this.dates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }))
       });
-      // console.log(this.dates);
-
 
       this.chart = new Chart('canvas', {
         type: 'line',
