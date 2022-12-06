@@ -1,39 +1,50 @@
-import { OnInit, Component, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   form!: FormGroup;
-  constructor(private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router) {
 
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
-  login() {
-    const val = this.form.value;
-    console.log(val.username);
-    console.log(val.password);
-    if (val.username && val.password) {
-      this.authService.loginAuth(val.username, val.password).subscribe(
-          () => {
-            console.log("User is logged in");
-            this.router.navigateByUrl('/');
-          }
-        );
-    }
+
+  async onSubmit() {
+    console.log(this.form.value.username);
+    console.log(this.form.value.password);
+    
+    
+    // Call the authentication service and pass it the form data
+    const loginObservable: Observable<any> = await this.authService.login(this.form.value.username, this.form.value.password);
+    // Subscribe to the Observable to handle the response from the Flask API
+    loginObservable.subscribe(
+      // Handle successful login
+      (response: any) => {
+        console.log('Login successful: ', response);
+      },
+      // Handle error
+      (error: any) => {
+        console.error('Error during login: ', error);
+      }
+    );
   }
 
-  hide = true
+  hide = true;
 }
