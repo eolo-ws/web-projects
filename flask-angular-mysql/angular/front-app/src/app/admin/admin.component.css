@@ -1,0 +1,37 @@
+.header-title {
+    text-align: center;
+}
+
+.header-subtitle {
+    padding-top: 10px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.login-button {
+    text-align: center;
+}
+
+.pass-link {
+    position: relative;
+    color: aliceblue;
+    text-align: left;
+}
+
+.form-field {
+
+    text-align: center;
+}
+
+.form-box {
+    width: 100%;
+}
+
+.main-card {
+    margin: auto;
+    width: 50%
+}
+
+fieldset {
+    border: none;
+}
