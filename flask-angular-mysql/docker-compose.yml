@@ -1,20 +1,20 @@
 services:
-  procsapp:
-    build: ./flask/procs-app
-    image: procs-app
+  getapp:
+    build: ./flask/get-app
+    image: get-app
     ports:
       - "5000:5000"
     network_mode: bridge
-    container_name: procs-app
-  storageapp:
-    build: ./flask/storage-app
-    image: storage-app
+    container_name: get-app
+  postapp:
+    build: ./flask/post-app
+    image: post-app
     links:
       - db
     ports:
       - "4000:4000"
     network_mode: bridge
-    container_name: storage-app
+    container_name: post-app
   userapp:
     build: ./flask/user-app
     image: user-app
