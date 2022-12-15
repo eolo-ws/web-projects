@@ -7,7 +7,7 @@ import { shareReplay } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Promise<Observable<Body>> {
     // Hash the password with sha256
@@ -16,10 +16,11 @@ export class AuthService {
     return window.crypto.subtle.digest('sha-256', data).then(hash => {
       // Convert the hash to a hexadecimal string
       const hexHash = Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+      console.log(hexHash);
 
       // Send the username and hashed password to the Flask API
       return this.http.post<Body>('http://127.0.0.1:3000/auth',
-       { username, password: hexHash }).pipe(shareReplay());
+        { username, password: hexHash }).pipe(shareReplay());
     });
   }
 }

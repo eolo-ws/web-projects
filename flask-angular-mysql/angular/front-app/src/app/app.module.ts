@@ -22,10 +22,12 @@ import { TableComponent } from './table/table.component';
 import { MaterialExampleModule } from '../material.module';
 import { ChartsComponent } from './charts/charts.component';
 import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, HomeComponent, TableComponent, ChartsComponent, LoginComponent],
+  declarations: [AppComponent, AboutComponent, HomeComponent, TableComponent, ChartsComponent, LoginComponent, AdminComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

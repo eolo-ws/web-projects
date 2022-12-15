@@ -2,7 +2,7 @@
   <mat-sidenav [(opened)]="opened" mode="side">
     <mat-toolbar>
       <button mat-icon-button (click)="opened = !opened">
-      <mat-icon>menu</mat-icon>
+        <mat-icon>menu</mat-icon>
       </button>
       <span>Menu</span>
     </mat-toolbar>
@@ -10,7 +10,10 @@
     <a routerLink="/table" id="side"><mat-card>Processes</mat-card></a>
     <a routerLink="/charts" id="side"><mat-card>Charts</mat-card></a>
     <a routerLink="/login" id="side"><mat-card>Login</mat-card></a>
+    <a routerLink="/admin" id="side"><mat-card>admin</mat-card></a>
+    <a routerLink="/profile" id="side"><mat-card>profile</mat-card></a>
     <a routerLink="/about" id="side"><mat-card>About</mat-card></a>
+
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -19,7 +22,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <a routerLink="/"><span>Web Task Manager</span></a>
-      
+
     </mat-toolbar>
 
     <router-outlet></router-outlet>

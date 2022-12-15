@@ -20,3 +20,11 @@ CREATE TABLE header
   ts                    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,                   
   PRIMARY KEY           (id)                                 
 );
+
+CREATE TABLE users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(255) NOT NULL,
+  hash VARCHAR(255) NOT NULL
+);
+
+INSERT INTO users (username, hash) VALUES ('1234', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4');
