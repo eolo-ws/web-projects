@@ -1,0 +1,22 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav [(opened)]="opened" mode="side">
+        <mat-toolbar (click)="opened = !opened">
+            <span class="menu">Menu</span>
+        </mat-toolbar>
+        <a routerLink="/home" id="side"><mat-card>Home</mat-card></a>
+
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <mat-toolbar>
+            <button mat-icon-button (click)="opened = !opened">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <a routerLink="/home"><span>Web Task Manager</span></a>
+        </mat-toolbar>
+
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,25 @@
+mat-sidenav-container {
+    height: 100%;
+}
+
+mat-sidenav {
+    width: auto;
+    background-color: rgb(61, 61, 61);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+mat-card {
+    text-align: center;
+    padding: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+#side {
+    padding-top: 50%;
+}

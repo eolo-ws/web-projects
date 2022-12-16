@@ -1,0 +1,48 @@
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(107, 107, 107);
+}
+
+.header-title {
+    text-align: center;
+    color: white;
+}
+
+.header-subtitle {
+    padding-top: 10px;
+    padding-bottom: 30px;
+    text-align: center;
+    color: white;
+}
+
+.login-button {
+    padding-top: 30px;
+    text-align: center;
+}
+
+.pass-link {
+    position: relative;
+    color: aliceblue;
+    text-align: left;
+    padding-left: 4%;
+}
+
+.form-field {
+    text-align: center;
+}
+
+.form-box {
+    width: 100%;
+}
+
+.main-card {
+    margin: auto;
+    width: auto;
+}
+
+fieldset {
+    border: none;
+}
