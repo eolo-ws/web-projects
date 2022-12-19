@@ -10,6 +10,6 @@ export class AppComponent {
   user: any;
   constructor() {
     // initialize the user property to null
-    this.user = null;
+    this.user = 'null';
   }
 }

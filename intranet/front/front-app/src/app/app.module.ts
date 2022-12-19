@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { ManagementComponent } from './management/management.component';
 
 
 
@@ -19,6 +20,7 @@ import { HomeComponent } from './home/home.component';
     SidebarComponent,
     LoginComponent,
     HomeComponent,
+    ManagementComponent,
   ],
   imports: [
     BrowserModule,

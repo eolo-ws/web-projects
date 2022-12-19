@@ -1,0 +1,27 @@
+services:
+  userapp:
+    build: ./back/user-app
+    image: user-app
+    links:
+      - db
+    ports:
+      - "3000:3000"
+    network_mode: bridge
+    container_name: user-app
+  frontapp:
+    build: ./front/front-app
+    image: front-app
+    ports:
+      - "4200:4200"
+    network_mode: bridge      
+    container_name: front-app
+
+  db:
+    image: mysql:debian
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+    network_mode: bridge
