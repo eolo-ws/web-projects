@@ -44,10 +44,36 @@ mat-grid-tile {
 
 .main-card {
     margin: auto;
-    width: auto;
+    width: 80%;
     height: 100%;
 }
 
 fieldset {
     border: none;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-elevation-z8 {
+    width: 90%;
+}
+
+.table-title {
+    text-align: center;
+    background-color: rgb(66, 66, 66);
+    height: 100%;
+    font-size: x-large;
+    font-weight: bold;
+    padding: 2%;
+}
+
+.button-div {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.buttons-1 {
+    margin-right: 2%;
 }

@@ -24,16 +24,17 @@ export class TableComponent implements OnInit {
     private MatTableModule: MatTableModule,
     private _liveAnnouncer: LiveAnnouncer,
     private http: HttpClient
-  ) {}
+  ) { }
 
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort)sort!: MatSort;
+  @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
     this.flaskApi.getProcsData().subscribe((data) => {
       this.data = data;
+      console.log(this.data)
       this.flaskApi.postProcsData(this.data).subscribe((something) => {
         console.log('Posted procs data.');
       });

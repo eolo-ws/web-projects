@@ -2,6 +2,7 @@ from flask_cors import CORS
 from flask import jsonify, request, Flask
 import mysql.connector
 
+
 app = Flask(__name__)
 CORS(app)
 config = {
@@ -28,12 +29,12 @@ def authenticate():
     try:
         # Check if the username and password are correct
         conn = mysql.connector.connect(**config)
-        cur = conn.cursor()
-        cur.execute(
+        cursor = conn.cursor()
+        cursor.execute(
             "SELECT * FROM users WHERE username=%s AND hash=%s", (username, password))
-        user = cur.fetchone()
+        user = cursor.fetchone()
         print(user, flush=True)
-        cur.close()
+        cursor.close()
         conn.close()
         return jsonify({'username': username, 'password': password})
 
@@ -42,9 +43,25 @@ def authenticate():
         return jsonify({'error': 'Failed to authenticate user'}), 500
 
 
-@app.route('/createUser', methods=['POST'])
-def createUser():
-    pass
+@app.route('/readUserData', methods=['GET'])
+def readUserData():
+    try:
+        # Check if the username and password are correct
+        conn = mysql.connector.connect(**config)
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT id, username, level FROM users")
+        row_headers = [x[0] for x in cursor.description]
+        rv = cursor.fetchall()
+        json_data = []
+        for result in rv:
+            json_data.append(dict(zip(row_headers, result)))
+        cursor.close()
+        conn.close()
+        return json_data
+    except mysql.connector.Error as error:
+        print("Failed to get record from MySQL table: {}".format(error), flush=True)
+        return jsonify({'error': 'Failed to get user data'}), 500
 
 
 if __name__ == "__main__":

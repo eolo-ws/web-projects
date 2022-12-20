@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { GetService } from '../get.service';
 
+
 @Component({
   selector: 'app-management',
   templateUrl: './management.component.html',
@@ -15,7 +16,9 @@ import { GetService } from '../get.service';
 })
 export class ManagementComponent {
   form!: FormGroup;
-  displayedColumns: string[] = ['Id', 'Username', 'Level'];
+  displayedColumns: string[] = ['id', 'username', 'level'];
+  data: any;
+
 
   constructor(
     private fb: FormBuilder,
@@ -28,8 +31,30 @@ export class ManagementComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
   ngOnInit() {
-    this.getService.getUserData().subscribe
+    this.form = this.fb.group({
+      username: ['', Validators.required],
+      level: ['', [Validators.required]],
+      password: ['', Validators.required]
+    });
+    this.getService.getUserData().subscribe((data) => {
+      console.log(data);
+      this.data = data
+      console.log(this.data);
+      this.dataSource = new MatTableDataSource(this.data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+
+  }
+  onCreate() {
+    console.log('a');
+
+  }
+  onDelete() {
+    console.log('a');
+
   }
 
   announceSortChange(sortState: Sort) {
@@ -39,4 +64,6 @@ export class ManagementComponent {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
+  hide = true;
+  create = true;
 }
