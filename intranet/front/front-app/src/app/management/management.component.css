@@ -1,79 +1,8 @@
-mat-grid-tile {
-    background-color: rgb(107, 107, 107);
-}
-
-.center-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: rgb(107, 107, 107);
-}
-
-.header-title {
-    text-align: center;
-    color: white;
-}
-
-.header-subtitle {
-    padding-top: 10px;
-    padding-bottom: 30px;
-    text-align: center;
-    color: white;
-}
-
-.login-button {
-    padding-top: 30px;
-    text-align: center;
-}
-
-.pass-link {
-    position: relative;
-    color: aliceblue;
-    text-align: left;
-    padding-left: 4%;
-}
-
-.form-field {
-    text-align: center;
-}
-
-.form-box {
-    width: 100%;
-}
-
-.main-card {
-    margin: auto;
-    width: 80%;
-    height: 100%;
-}
-
-fieldset {
-    border: none;
-}
-
-table {
-    width: 100%;
-}
-
-.mat-elevation-z8 {
-    width: 90%;
-}
-
-.table-title {
-    text-align: center;
-    background-color: rgb(66, 66, 66);
-    height: 100%;
-    font-size: x-large;
-    font-weight: bold;
-    padding: 2%;
-}
-
 .button-div {
-    text-align: center;
     padding-top: 20px;
+    text-align: center;
 }
 
-.buttons-1 {
-    margin-right: 2%;
+.bt {
+    margin-left: 1%;
 }

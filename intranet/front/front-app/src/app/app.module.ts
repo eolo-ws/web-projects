@@ -12,7 +12,10 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ManagementComponent } from './management/management.component';
 
-
+import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import { RegisterComponent } from './register/register.component';
+import { DeleteComponent } from './delete/delete.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { ManagementComponent } from './management/management.component';
     LoginComponent,
     HomeComponent,
     ManagementComponent,
+    RegisterComponent,
+    DeleteComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,7 @@ import { ManagementComponent } from './management/management.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

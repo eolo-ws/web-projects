@@ -1,0 +1,15 @@
+.table-div {
+    margin: auto;
+    width: 100%;
+}
+
+.table-title {
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: rgb(66, 66, 66);
+}
+
+table {
+    width: auto;
+}

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppComponent } from '../app.component';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -27,21 +27,22 @@ export class LoginComponent {
     });
   }
 
-  async onSubmit() {
-    console.log(this.form.value.username);
-    console.log(this.form.value.password);
-    const loginObservable: Observable<any> = await this.authService.login(this.form.value.username, this.form.value.password);
-    loginObservable.subscribe(
-      // Handle successful login
-      (response: any) => {
+  onSubmit() {
+    const loginObservable: Observable<any> = this.authService.login(this.form.value.username, this.form.value.password);
+    loginObservable.subscribe({
+      next: (response: any) => {
         console.log('Login successful: ', response);
         this.app.user = { username: this.form.value.username };
       },
-      // Handle error
-      (error: any) => {
+      error: (error: any) => {
         console.error('Error during login: ', error);
+      },
+      complete: () => {
+        console.log('Login complete');
       }
-    );
+    });
   }
+
+
   hide = true;
 }

@@ -1,0 +1,59 @@
+<mat-card class="register-card">
+
+
+    <mat-card-content class="register-title">
+        <h2>Create user</h2>
+    </mat-card-content>
+
+    <form [formGroup]="form" (ngSubmit)="onCreate()">
+        <fieldset>
+            <mat-card-content>
+
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Enter username</mat-label>
+                    <input name="username" matInput placeholder="username" formControlName="username">
+                </mat-form-field>
+
+
+                <mat-form-field appearance="fill" class="form-field">
+
+                    <mat-label>Enter password</mat-label>
+
+                    <input name="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+
+                    <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="form-field">
+
+                    <mat-label>Enter admin password</mat-label>
+
+                    <input name="adminPassword" matInput [type]="hide ? 'password' : 'text'"
+                        formControlName="adminPassword">
+
+                    <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+
+                </mat-form-field>
+
+
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Enter permissions level 1: admin 2: user</mat-label>
+                    <input name="level" matInput placeholder="level" formControlName="level" pattern="[12]">
+                </mat-form-field>
+
+            </mat-card-content>
+        </fieldset>
+
+        <mat-card-content class="login-button">
+            <button mat-raised-button color="accent" type="button" (click)="onCreate()">Create user</button>
+        </mat-card-content>
+
+    </form>
+</mat-card>

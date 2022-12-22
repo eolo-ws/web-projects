@@ -5,8 +5,10 @@ import { ManagementComponent } from './management/management.component';
 
 
 const routes: Routes = [
+  { path: "", component: HomeComponent },
   { path: "home", component: HomeComponent },
-  { path: "management", component: ManagementComponent }
+  { path: "management", component: ManagementComponent },
+  { path: '**', redirectTo: '' }
 
 ];
 
